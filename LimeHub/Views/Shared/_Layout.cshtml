@@ -1,0 +1,396 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var cartCount = HttpContextAccessor?.HttpContext?.Session.GetInt32("CartCount") ?? 9;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/assets/web/assets/mobirise-icons2/mobirise2.css">
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="~/assets/parallax/jarallax.css">
+    <link rel="stylesheet" href="~/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="~/assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="~/assets/theme/css/style.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Outfit:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
+    <link rel="preload" as="style" href="~/assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="~/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+    <style>
+        :root {
+            --primary-green: #4CAF50;
+            --primary-dark-green: #388E3C;
+            --light-grey: #ffffff;
+            --dark-grey: #343a40;
+            --text-color: #333333;
+            --white: #ffffff;
+            --black: #000000;
+        }
+
+        body {
+            background-color: var(--light-grey);
+            color: var(--text-color);
+        }
+
+        .product-card .image-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+            .product-card .image-wrapper img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+        .features16 .card, .product-card {
+            margin-bottom: 30px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+            background-color: var(--white);
+        }
+
+            .features16 .card:hover, .product-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            }
+
+            .product-card .card-box {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .product-card .card-title a {
+                color: var(--text-color);
+                text-decoration: none;
+                font-weight: 600;
+                transition: color 0.3s ease;
+            }
+
+                .product-card .card-title a:hover {
+                    color: var(--primary-green);
+                }
+
+            .product-card .card-text {
+                color: #666666;
+                font-size: 0.95rem;
+                margin-top: 10px;
+                min-height: 40px;
+            }
+
+            .product-card .btn-primary {
+                background-color: var(--primary-green);
+                border-color: var(--primary-green);
+                color: var(--white);
+                font-weight: 500;
+                padding: 10px 25px;
+                border-radius: 50px;
+                transition: all 0.3s ease;
+            }
+
+                .product-card .btn-primary:hover {
+                    background-color: var(--primary-dark-green);
+                    border-color: var(--primary-dark-green);
+                    transform: scale(1.05);
+                }
+
+        .menu.cid-tsEM272M7k {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+
+            .menu.cid-tsEM272M7k .navbar-nav .nav-link {
+                color: var(--white) !important;
+                font-weight: 200;
+                transition: color 0.3s ease;
+                padding: 10px 15px;
+            }
+
+                .menu.cid-tsEM272M7k .navbar-nav .nav-link:hover {
+                    color: var(--primary-green) !important;
+                }
+
+            .menu.cid-tsEM272M7k .navbar-brand .navbar-caption {
+                color: var(--primary-green) !important;
+                font-weight: bold;
+                font-size: 1.6rem !important;
+            }
+
+            .menu.cid-tsEM272M7k .navbar-brand img {
+            }
+
+        .navbar-collapse {
+            flex-grow: 0;
+            margin-right: auto;
+        }
+
+        .navbar-right-group {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .search-bar {
+            margin-right: 15px;
+        }
+
+            .search-bar input {
+                border-radius: 25px;
+                padding: 8px 20px;
+                border: 1px solid #ccc;
+                font-size: 0.9rem;
+            }
+
+            .search-bar button {
+                border: none;
+                background: transparent;
+                margin-left: -35px;
+                cursor: pointer;
+                color: #888;
+            }
+
+        .icons-menu .mbr-iconfont:hover {
+            color: var(--primary-green) !important;
+        }
+
+        .navbar-buttons .btn-primary {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+            .navbar-buttons .btn-primary:hover {
+                background-color: var(--primary-dark-green);
+                border-color: var(--primary-dark-green);
+                transform: translateY(-2px);
+            }
+
+        .footer4.cid-tsF62b291W {
+            background-color: var(--dark-grey);
+            color: var(--white);
+            padding-top: 20px;
+        }
+
+        .footer4 .mbr-section-subtitle {
+            color: var(--primary-green);
+            font-weight: bold;
+            margin-bottom: 15px !important;
+        }
+
+        .footer4 .list .mbr-text {
+            color: #cccccc;
+            line-height: 1.8;
+            margin-bottom: 5px;
+        }
+
+            .footer4 .list .mbr-text:hover {
+                color: var(--white);
+            }
+
+        .footer4 .mbr-text.mb-0 {
+            color: #999999;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .footer4 .media-wrap img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .sidebar-banner {
+            background-color: var(--white) !important;
+            border-radius: 10px !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+            padding: 25px !important;
+        }
+
+            .sidebar-banner img {
+                border-radius: 8px;
+            }
+
+            .sidebar-banner .btn {
+                border-radius: 50px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+
+            .sidebar-banner .btn-success {
+                background-color: var(--primary-green);
+                border-color: var(--primary-green);
+            }
+
+                .sidebar-banner .btn-success:hover {
+                    background-color: var(--primary-dark-green);
+                    border-color: var(--primary-dark-green);
+                    transform: translateY(-2px);
+                }
+
+            .sidebar-banner .btn-info {
+                background-color: #17a2b8;
+                border-color: #17a2b8;
+            }
+
+                .sidebar-banner .btn-info:hover {
+                    background-color: #138496;
+                    border-color: #138496;
+                    transform: translateY(-2px);
+                }
+
+        .mbr-section-title strong, .mbr-section-subtitle strong {
+            color: white;
+        }
+
+        .mbr-section-head h4, .mbr-section-head h5 {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <section data-bs-version="5.1" class="menu menu2 cid-tsEM272M7k" once="menu" id="menu2-0">
+        <nav class="navbar navbar-dropdown navbar-expand-lg">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <div class="navbar-brand">
+                    <span class="navbar-logo">
+                        <a asp-controller="Home" asp-action="Index">
+                            <img src="~/assets/images/icons8-moto-64 (1).png" alt="LimeHub" style="height: 3rem;">
+                        </a>
+
+                    </span>
+                    <span class="navbar-caption-wrap">
+                        <a class="navbar-caption text-black display-7" asp-controller="Home" asp-action="Index">LimeHub</a>
+                    </span>
+                </div>
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                        <li class="nav-item">
+                            <a class="nav-link link text-black display-4" asp-controller="Home" asp-action="Index">Trang Chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link text-black display-4" asp-controller="Products" asp-action="Index">Sản Phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link text-black display-4" asp-controller="Home" asp-action="Contact">Liên Hệ</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="navbar-right-group">
+                    <div class="search-bar d-flex">
+                        <input type="text" placeholder="Tìm kiếm...">
+                        <button type="submit"><span class="mobi-mbri-search mobi-mbri"></span></button>
+                    </div>
+                    <div class="icons-menu">
+                        <a class="iconfont-wrapper" href="tel:+1234567890">
+                            <span class="p-2 mbr-iconfont mobi-mbri-phone mobi-mbri"></span>
+                        </a>
+                        <a class="iconfont-wrapper" href="mailto:info@site.com">
+                            <span class="p-2 mbr-iconfont mobi-mbri-letter mobi-mbri"></span>
+                        </a>
+                        <a class="iconfont-wrapper" asp-controller="ShoppingCart" asp-action="Index">
+                            <span class="p-2 mbr-iconfont mobi-mbri-cart-full mobi-mbri"></span> (@cartCount)
+                        </a>
+                    </div>
+                    <div class="navbar-buttons mbr-section-btn ms-2">
+                        <a class="btn btn-primary display-4" href="#">Đăng nhập</a>
+                    </div>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </section>
+
+    @RenderBody()
+
+    <section data-bs-version="5.1" class="footer4 cid-tsF62b291W" id="footer4-i">
+        <div class="container">
+            <div class="row mbr-white">
+                <div class="col-6 col-lg-3">
+                    <div class="media-wrap col-md-8 col-12">
+                        <a asp-controller="Home" asp-action="Index">
+                            <h2><strong>LimeHub</strong></h2>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 display-7">
+                        <strong>Về chúng tôi</strong>
+                    </h5>
+                    <ul class="list mbr-fonts-style display-4">
+                        <li class="mbr-text item-wrap">Câu chuyện của chúng tôi</li>
+                        <li class="mbr-text item-wrap">Liên hệ</li>
+                        <li class="mbr-text item-wrap">Cửa hàng</li>
+                        <li class="mbr-text item-wrap">Đánh giá</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 display-7">
+                        <strong>Cửa hàng</strong>
+                    </h5>
+                    <ul class="list mbr-fonts-style display-4">
+                        <li class="mbr-text item-wrap">Xe Moto</li>
+                        <li class="mbr-text item-wrap">Phụ kiện</li>
+                        <li class="mbr-text item-wrap">Bảo dưỡng</li>
+                        <li class="mbr-text item-wrap">Ưu đãi</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 display-7">
+                        <strong>Liên hệ</strong>
+                    </h5>
+                    <ul class="list mbr-fonts-style display-4">
+                        <li class="mbr-text item-wrap">Điện thoại: +1 (0) 123 456 7890</li>
+                        <li class="mbr-text item-wrap">Email: info@limehub.com</li>
+                        <li class="mbr-text item-wrap">Địa chỉ: 3200 Yonge Street</li>
+                    </ul>
+                </div>
+                <div class="col-12 mt-4">
+                    <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                        © Bản quyền 2025 LimeHub - Mọi quyền được bảo lưu '3'
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/parallax/jarallax.js"></script>
+    <script src="~/assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="~/assets/ytplayer/index.js"></script>
+    <script src="~/assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="~/assets/theme/js/script.js"></script>
+</body>
+</html>

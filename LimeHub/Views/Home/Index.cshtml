@@ -1,0 +1,98 @@
+﻿@model IEnumerable<LimeHub.Models.Product>
+@using LimeHub.Models
+
+@{
+    ViewData["Title"] = "Trang Chủ - LimeHub";
+}
+
+<section data-bs-version="5.1" class="header5 cid-tsEIwFz90w mbr-fullscreen" id="header5-3" style="background-image: url('https://thuthuatnhanh.com/wp-content/uploads/2022/06/anh-PKL-cuc-dep.jpg');">
+    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(0, 0, 0);"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>Khám phá sức mạnh </strong>
+                </h1>
+                <h2 class="mbr-section-subtitle mbr-fonts-style mbr-white mb-4 display-5">
+                    Trải nghiệm cảm giác tự do trên mọi nẻo đường với những chiếc xe đẳng cấp!
+                </h2>
+                    <div class="mbr-section-btn mt-3">
+                        <a asp-controller="Products" asp-action="Shop" class="btn btn-warning display-4" target="_self">
+                            MUA NGAY
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section data-bs-version="5.1" class="content-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="mbr-section-head">
+                    <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 mt-2 display-2">
+                        Xe Moto nổi bật
+                    </h4>
+                    <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2 display-5">
+                        Những mẫu xe được yêu thích nhất
+                    </h5>
+                </div>
+                <div class="row mt-4 justify-content-center">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-12 col-md-6 col-lg-4 mb-4">
+                            <div class="card product-card">
+                                <div class="image-wrapper">
+                                    <a asp-controller="Products" asp-action="Detail" asp-route-id="@item.Id">
+                                        <img src="@item.ImageUrl" alt="@item.Name">
+                                    </a>
+                                </div>
+                                <div class="card-box">
+                                    <h5 class="card-title">
+                                        <a asp-controller="Products" asp-action="Detail" asp-route-id="@item.Id">
+                                            @item.Name
+                                        </a>
+                                    </h5>
+                                    <p class="card-text">@item.Detail</p>
+                                    <p class="mbr-text mbr-fonts-style mb-0 display-7">
+                                        <strong>@item.Price.ToString("C0")</strong>
+                                    </p>
+                                    <div class="mbr-section-btn pt-3">
+                                        <a href="#" class="btn btn-primary display-4">
+                                            <span class="mobi-mbri-shopping-bag mobi-mbri"></span> Mua ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-3 mt-4 mt-lg-0">
+                <div class="d-flex flex-column gap-4">
+                    <div class="card sidebar-banner">
+                        <img src="~/assets/images/image_e7071d.jpg" alt="LimeHub Offers!">
+                        <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 display-7"><strong>Ưu Đãi Đặc Biệt!</strong></h5>
+                        <p class="mbr-text mbr-fonts-style display-7 mb-3">Giảm giá lên tới 30% cho các sản phẩm chọn lọc. Đừng bỏ lỡ!</p>
+                        <div class="mbr-section-btn">
+                            <a class="btn btn-success display-4" href="#">Xem ngay</a>
+                        </div>
+                    </div>
+
+                    <div class="card sidebar-banner">
+                        <img src="~/assets/images/image_e70645.png" alt="Featured Items!">
+                        <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 display-7"><strong>Sản Phẩm Nổi Bật!</strong></h5>
+                        <p class="mbr-text mbr-fonts-style display-7 mb-3">Khám phá những mẫu xe và phụ kiện mới nhất.</p>
+                        <div class="mbr-section-btn">
+                            <a class="btn btn-info display-4" href="#">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
